@@ -1,0 +1,4 @@
+d-if(if="{global.route.name === args.name}")
+  span {global.routesNames[args.name]}
+d-else
+  a(href="{global.router.buildURL(args.name)}") {global.routesNames[args.name]}

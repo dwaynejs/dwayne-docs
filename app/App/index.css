@@ -1,0 +1,79 @@
+pre {
+  padding: 3px 8px;
+  background-color: #ddd;
+}
+
+.hljs-keyword,
+.hljs-literal {
+  color: #00d;
+}
+
+.hljs-string {
+  color: #0b0;
+}
+
+.hljs-number {
+  color: #44f;
+}
+
+.hljs-regexp {
+  color: orange;
+}
+
+.hljs-built_in {
+  color: purple;
+}
+
+.hljs-tag .hljs-name {
+  color: blue;
+}
+
+.hljs-tag .hljs-attr {
+  color: #f33;
+}
+
+.route-root {
+  display: flex;
+  align-items: flex-start;
+}
+
+.menu {
+  position: relative;
+  flex: 0 0 220px;
+  margin-top: 20px;
+}
+
+.menu:after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: -10px;
+  right: 20px;
+  width: 2px;
+  height: calc(100% + 20px);
+  background-color: black;
+}
+
+.menu a {
+  display: block;
+}
+
+.menu-content {
+  flex: 0 0 calc(100% - 220px);
+}
+
+.next-link:after {
+  content: " \2192";
+}
+
+.prev-link {
+  margin-right: 20px;
+}
+
+.prev-link:before {
+  content: "\2190\00a0";
+}
+
+a {
+  color: blue;
+}

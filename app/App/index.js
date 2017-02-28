@@ -14,15 +14,17 @@ class App extends Block {
 
     this.setGlobalRoute();
 
-    this.global.routesNames = {
+    this.globals.routesNames = {
       introduction: 'Introduction',
       'getting-started': 'Getting started',
-      terminology: 'Terminology'
+      terminology: 'Terminology',
+      blocks: 'Blocks',
+      'd-if': 'd-if'
     };
   }
 
   setGlobalRoute = () => {
-    this.global.route = this.args.route;
+    this.globals.route = this.args.route;
   };
 
   afterConstruct() {

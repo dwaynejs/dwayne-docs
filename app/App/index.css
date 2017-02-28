@@ -1,6 +1,12 @@
+html {
+  font-family: "Helvetica Neue",Segoe UI,Helvetica,Roboto,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 pre {
   padding: 3px 8px;
-  background-color: #ddd;
+  background-color: #e8e8e8;
 }
 
 .hljs-keyword,
@@ -29,7 +35,7 @@ pre {
 }
 
 .hljs-tag .hljs-attr {
-  color: #f33;
+  color: #911;
 }
 
 .route-root {
@@ -39,8 +45,9 @@ pre {
 
 .menu {
   position: relative;
-  flex: 0 0 220px;
+  flex: 0 0 200px;
   margin-top: 20px;
+  margin-right: 20px;
 }
 
 .menu:after {
@@ -48,7 +55,7 @@ pre {
   position: absolute;
   display: block;
   top: -10px;
-  right: 20px;
+  right: 0;
   width: 2px;
   height: calc(100% + 20px);
   background-color: black;
@@ -60,6 +67,10 @@ pre {
 
 .menu-content {
   flex: 0 0 calc(100% - 220px);
+}
+
+.submenu-link {
+  margin-left: 20px;
 }
 
 .next-link:after {

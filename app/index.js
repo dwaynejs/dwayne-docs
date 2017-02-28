@@ -5,6 +5,7 @@ import './App';
 import './Introduction';
 import './GettingStarted';
 import './Terminology';
+import './Blocks';
 
 import './MenuLink';
 import './NextLink';

@@ -1,4 +1,11 @@
-d-if(if="{global.route.name === args.name}")
-  span {global.routesNames[args.name]}
+d-if(if="{args.submenu ? globals.route.hash === args.submenu || '' : globals.route.name === args.name}")
+  div(d-class(submenu-link)="{args.submenu}") {globals.routesNames[args.submenu || args.name]}
+  d-if(if="{children.length}")
+    div
+      d-block
 d-else
-  a(href="{global.router.buildURL(args.name)}") {global.routesNames[args.name]}
+  a(
+    href="{globals.router.buildURL(args.name, { hash: args.submenu || '' })}"
+    d-class(submenu-link)="{args.submenu}"
+    no-routing="{!!args.submenu}"
+  ) {globals.routesNames[args.submenu || args.name]}

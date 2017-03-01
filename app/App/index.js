@@ -17,7 +17,10 @@ class App extends Block {
     this.globals.routesNames = {
       introduction: 'Introduction',
       'getting-started': 'Getting started',
+      'app-lifecycle': 'App lifecycle',
       terminology: 'Terminology',
+      'block-lifecycle': 'Block lifecycle',
+      'mixin-lifecycle': 'Mixin lifecycle',
       blocks: 'Blocks',
       'd-if': 'd-if'
     };

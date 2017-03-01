@@ -4,9 +4,31 @@ html {
   line-height: 1.5;
 }
 
+.root {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+code {
+  background-color: #ebebeb;
+}
+
+pre code {
+  background-color: inherit;
+}
+
 pre {
   padding: 3px 8px;
   background-color: #e8e8e8;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+blockquote {
+  margin-left: 0;
+  padding-left: 1em;
+  border-left: 0.25em solid #ccc;
+  color: #666;
 }
 
 .hljs-keyword,
@@ -41,6 +63,7 @@ pre {
 .route-root {
   display: flex;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .menu {
@@ -67,6 +90,19 @@ pre {
 
 .menu-content {
   flex: 0 0 calc(100% - 220px);
+  max-width: calc(100% - 220px);
+}
+
+@media all and (max-width: 450px) {
+  .menu,
+  .menu-content {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .menu:after {
+    content: none;
+  }
 }
 
 .submenu-link {

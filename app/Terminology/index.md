@@ -26,23 +26,18 @@ to be registered (otherwise it will be parsed as a regular
 HTML element) like this:
 
 ```js
-// MyDiv/index.js
-
 import { Block } from 'dwayne';
 
-class MyDiv extends Block {
-  static template = '<div class="my-div"><d-block/></div>';
-}
-
-Block.block('MyDiv', MyDiv);
+Block.block('MyDiv', '<div class="my-div"><d-block/></div>');
 ```
 
 This is just a simple wrapper into `div.my-div`
-HTML-element.
+HTML-element (`d-block` is a built-in block which we will
+discuss a bit later).
 
 ### Mixins
 
-Mixin is like a special HTML attribute which allows
+Mixin looks like a special HTML attribute which allows
 you to change HTML element behaviour. As with blocks
 there are some built-in mixins, ones that are written
 by you and usual HTML attributes.  
@@ -52,7 +47,7 @@ Attributes for Blocks are called arguments (or simply
 
 ```html
 <div
-  id="my-input"
+  id="my-div"
   d-class="{{ visible: visible }}"
   markdown="# Hello"
 />
@@ -84,38 +79,51 @@ Block.mixin('markdown', Markdown);
 
 There are 3 types of variables in Dwayne:
 
-##### Local variables (locals)
+#### Local variables (locals)
 
 This is the most common type of variable. It's simply
-an instance property that can be used both by the view
-and the controller. Example:
+an block class instance property that can be used both
+by the view and the controller. Example:
 
 ```js
 import { Block } from 'dwayne';
 
-class Counter extends Block {
-  static template = '<div>Counter: {counter}</div>';
+class Greeter extends Block {
+  static template = '<div>Hello, {who}!</div>';
   
-  counter = 0;
-  
-  afterConstruct() {
-    // we will look through the Block API later
-    
-    setInterval(() => {
-      // these changes will be immediately
-      // reflected by the view
-      this.counter++;
-    }, 1000);
-  }
+  who = 'world';
 }
 
-Block.block('Counter', Counter);
+Block.block('Greeter', Greeter);
 ```
 
-##### Arguments variables (args)
+#### Arguments variables (args)
 
 This is variables that come from a block that uses this
-block. You can access args through Block#args property.
+block in its template. You can access args through
+`Block#args` property. For example:
+
+```js
+// App.js
+
+import { Block } from 'dwayne';
+
+Block.block('App', '<Greeter who="world"/>');
+```
+
+```js
+// Greeter.js
+
+import { Block } from 'dwayne';
+
+Block.block('Counter', '<div>Hello, {args.who}!</div>');
+```
+
+#### Global variables (globals)
+
+Global variables are the rarest type of variables but the
+most powerful. They let you declare, change variables that
+are visible to all child blocks, their children and etc.
 For example:
 
 ```js
@@ -124,14 +132,12 @@ For example:
 import { Block } from 'dwayne';
 
 class App extends Block {
-  static template = '<Counter value="{counter}"/>';
+  static template = '<Counter/>';
   
-  counter = 0;
-  
-  afterConstruct() {
-    setInterval(() => {
-      this.counter++;
-    }, 1000);
+  constructor(opts) {
+    super(opts);
+    
+    this.globals.who = 'world';
   }
 }
 
@@ -143,7 +149,12 @@ Block.block('App', App);
 
 import { Block } from 'dwayne';
 
-Block.block('Counter', '<div>Counter: {args.counter}</div>');
+Block.block('Counter', '<div>Hello, {globals.who}!</div>');
 ```
 
-##### Global variables (globals)
+Note that all types variables are watched if they are
+defined in the constructor function (args are defined
+in `Block` constructor by Dwayne itself). So every time
+a variable changes the view changes as well (in cases
+of reversed binding in inputs the same thing happens
+to the controller and the rest of the view).

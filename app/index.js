@@ -5,6 +5,9 @@ import './App';
 import './Introduction';
 import './GettingStarted';
 import './Terminology';
+import './AppLifecycle';
+import './BlockLifecycle';
+import './MixinLifecycle';
 import './Blocks';
 
 import './MenuLink';

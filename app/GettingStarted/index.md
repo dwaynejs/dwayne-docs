@@ -70,7 +70,11 @@ import template from './index.html';
 class App extends Block {
   static template = template;
   
-  who = 'world';
+  constructor(opts) {
+    super(opts);
+    
+    this.who = 'world';
+  }
 }
 
 Block.block('App', App); // this is a block registration
@@ -83,7 +87,8 @@ with the following content:
 import { initApp } from 'dwayne';
 import './App';
 
-initApp('App', document.getElementById('root')); // insert div#root element in your main HTML file
+// insert div#root element in your main HTML file
+initApp('App', document.getElementById('root'));
 ```
 
 And this is it! Open up your app in browser and see the result!

@@ -13,7 +13,7 @@ directory.
 
 Then there are two ways to start using Dwayne:
 
-##### Through a module bundler (recommended)
+#### Through a module bundler (recommended)
 
 You will need [Webpack](https://webpack.github.io/),
 [Browserify](http://browserify.org/) or
@@ -36,7 +36,7 @@ Block.block('MyBlock', MyBlock);
 
 We will proceed to blocks declaration and initialization later.
 
-##### Through a regular HTML script tag (not recommended)
+#### Through a regular HTML script tag (not recommended)
 
 ```html
 <script src="/node_modules/dwayne/build/dwayne.min.js"></script>
@@ -47,37 +47,32 @@ all of the exported properties set.
 
 ### Writing a simple app
 
-We assume you use a module bundler so we will use ES6 `import`
-statements in all following examples.
+We assume you already use a module bundler and you know how to
+use [Babel](https://babeljs.io/) so we will use ES6 classes and
+`import` statements in all following examples.
+Also you should probably have this babel plugin
+(https://babeljs.io/docs/plugins/transform-class-properties/)
+installed in your npm as well (you could write the examples
+without it, but in order to do that you need to transform all of
+the code to ES6 compatible code).
+
+Note that you still can write all the examples in the global
+scope (using the `script` way), but it's really not recommended.
 
 First register your App block. For this step in your `app`
-directory create `App` folder with `index.js` and `indes.html`
-in it (you can use any template language which is compiled
-to HTML).
-
-Type in `app/App/index.html` the following:
-
-```html
-<div>Hello, {who}!</div>
-```
-
-Then type in `app/App/index.js` this:
+directory create `App.js`. Type in it:
 
 ```js
 import { Block } from 'dwayne';
-import template from './index.html';
 
 class App extends Block {
-  static template = template;
+  static template = '<div>Hello, {who}!</div>';
   
-  constructor(opts) {
-    super(opts);
-    
-    this.who = 'world';
-  }
+  who = 'world';
 }
 
-Block.block('App', App); // this is a block registration
+ // this is a block registration
+Block.block('App', App);
 ```
 
 Then create `app/index.js` file (which is the app root file)

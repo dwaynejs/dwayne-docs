@@ -52,8 +52,8 @@ you can use as embedded:
 `Infinity` require `window.NaN` and `window.Infinity`
 * Strings (including escaping, Unicode characters)
 * Primitive values (`undefined`, requires `window.undefined`)
-* Keywords: `true`, `false`, `null`, `this` (`this` is simply
-transformed to $, which is equals to the block instance)
+* Keywords (`true`, `false`, `null`, `this` (`this` is simply
+transformed to $, which is equals to the block instance))
 * Regular expressions (including flags and escaping)
 * Variables (which then transformed to block variables, i.e.
 `abc` is transformed to `$.abc` (`$` is a block instance))

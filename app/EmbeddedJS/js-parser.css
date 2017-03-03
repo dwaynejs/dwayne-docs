@@ -1,0 +1,74 @@
+.js-parser {
+  display: flex;
+  justify-content: space-between;
+
+  .expression-container,
+  .evaluated-container,
+  .scope,
+  .supporting {
+    border: 1px solid #000;
+    min-height: 20px;
+    margin: 10px 0;
+    padding: 10px;
+  }
+}
+
+.js-parser .inputs {
+  flex: 0 0 50%;
+  padding-right: 10px;
+}
+
+.js-parser .inputs .expression-input {
+  width: 100%;
+  margin-bottom: 10px;
+  height: 30px;
+  font-size: 16px;
+}
+
+.js-parser .results {
+  flex: 0 0 50%;
+  padding-left: 10px;
+}
+
+.js-parser .results .expression-container {
+  margin-top: 0 !important;
+}
+
+.js-parser .results .expression,
+.js-parser .results .evaluated {
+  margin-top: 10px;
+}
+
+.js-parser .expression-container,
+.js-parser .evaluated-container,
+.js-parser .scope,
+.js-parser .supporting {
+  border: 1px solid #000;
+  min-height: 20px;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.js-parser .number {
+  color: #44f;
+}
+
+.js-parser .keyword {
+  color: #00d;
+}
+
+.js-parser .string {
+  color: #0b0;
+}
+
+.js-parser .func {
+  color: purple;
+}
+
+.js-parser .error {
+  color: red;
+}
+
+.js-parser .regexp {
+  color: orange;
+}

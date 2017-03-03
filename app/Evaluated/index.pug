@@ -1,0 +1,38 @@
+d-switch(value="{true}")
+  d-case(if="{_.isNumber(args.value)}")
+    span.number {args.value}
+  d-case(if="{_.isString(args.value)}")
+    | "
+    span.string {args.value}
+    | "
+  d-case(if="{_.isFunction(args.value)}")
+    span.func {args.value}
+  d-case(if="{_.isRegExp(args.value)}")
+    span.regexp {`/${ args.value.source }/${ args.value.flags }`}
+  d-case(if="{_.isBoolean(args.value) || _.isNil(args.value)}")
+    span.keyword {'' + args.value}
+  d-case(if="{_.isArray(args.value)}")
+    d-if(if="{args.value.length}")
+      | [
+      d-each(set="{args.value}", item="item", index="i", uid="{i}")
+        span {`${ i === 0 ? '' : ',' }\n${ ' '.repeat((args.depth + 1) * 2) }`}
+        Evaluated(value="{item}", depth="{args.depth + 1}")
+      br
+      span {' '.repeat(args.depth * 2)}
+      | ]
+    d-else
+      span []
+  d-case(if="{_.isPlainObject(args.value)}")
+    d-if(if="{_.isEmpty(args.value)}")
+      span {'{}'}
+    d-else
+      | {
+      d-each(set="{args.value}", item="item", index="key", uid="{key}")
+        span {`${ (isFirstIndex(args.value, key) ? '' : ',') }\n${ ' '.repeat((args.depth + 1) * 2) }${ key }: `}
+        Evaluated(value="{item}", depth="{args.depth + 1}")
+      br
+      span {' '.repeat(args.depth * 2)}
+      | }
+  d-case(if="{_.isError(args.value)}")
+    span.error {`[Error] ${ args.value.message }`}
+  d-default {{}.toString.call(args.value)}

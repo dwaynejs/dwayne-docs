@@ -57,7 +57,7 @@ by the guide, see API docs). Note that it's necessary to call
 `super(opts)` in the `constructor` if you use it (though it's
 a rare case when you need to use the `constructor` in mixin).
 
-2. If mixin has a static `evaluate` property set to `false`
+2. If mixin class has a static `evaluate` property set to `false`
 (it's defaults to `true` and means that the HTML attribute value
 needs to be evaluated like any other HTML attribute or a block
 argument) nothing happens and steps `2` and `3` are skipped.

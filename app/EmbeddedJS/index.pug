@@ -1,0 +1,33 @@
+div(markdown="{md}")
+div.js-parser
+  div.inputs
+    input.expression-input(
+      type="text"
+      d-value="expression"
+      placeholder="Enter a JS expression to parse"
+    )
+    div.scope
+      | Block local variables
+      br
+      d-each(set="{scope}", item="item", uid="{item.id}")
+        div
+          input(
+            d-value="{(name) => changeScopeParamName(item.id, name)}"
+            placeholder="Variable name"
+          )
+          input(
+            d-value="{(value) => changeScopeParamValue(item.id, value)}"
+            placeholder="Variable value"
+          )
+          button(d-on(click)="{removeScopeParam(item.id)}") Remove
+      button(d-on(click)="{addScopeParam()}") Add
+  div.results
+    div.expression-container
+      | Expression
+      div.expression {resultExpression}
+    div.evaluated-container
+      | Evaluated
+      pre.evaluated
+        Evaluated(value="{resultEvaluated}", depth="{0}")
+NextLink(name="mixin-lifecycle", prev)
+NextLink(name="blocks")

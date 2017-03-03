@@ -83,7 +83,16 @@ There are 3 types of variables in Dwayne:
 
 This is the most common type of variable. It's simply
 an block class instance property that can be used both
-by the view and the controller. Example:
+by the view and the controller. There are some variables,
+that can't be overridden:
+
+* `Block#$$`: Block config.
+* `Block#$`: Block instance itself. Used as a scope when
+calling embedded JS.
+* `Block#args`: Block arguments.
+* `Block#globals`: Block global variables.
+
+Example:
 
 ```js
 import { Block } from 'dwayne';

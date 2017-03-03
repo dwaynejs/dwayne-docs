@@ -8,8 +8,10 @@ import './Terminology';
 import './AppLifecycle';
 import './BlockLifecycle';
 import './MixinLifecycle';
+import './EmbeddedJS';
 import './Blocks';
 
+import './Evaluated';
 import './MenuLink';
 import './NextLink';
 

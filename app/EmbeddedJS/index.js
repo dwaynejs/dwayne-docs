@@ -20,11 +20,6 @@ class EmbeddedJS extends Block {
   resultEvaluated = undefined;
 
   afterConstruct() {
-    this.expression = this.args.route.query.expression || this.expression;
-    this.scope = _.forEach(JSON.parse(this.args.route.query.scope || '[]'), (item) => {
-      item.id = id++;
-    });
-
     this.watch('expression', 'scope', this.calculate);
   }
 

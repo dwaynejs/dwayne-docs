@@ -1,6 +1,6 @@
 ## Embedded Javascript
 
-In your block templates you can use embedded JavaScript (that comes
+In your block templates you can use embedded Javascript (that comes
 from local variables, args or globals). There are a couple ways
 of achieving that:
 
@@ -36,6 +36,11 @@ value, mixin value or block argument in "{" and "}".
 ```
 
 ### Variables binding
+
+All your embedded JS code in templates is executed in the scope
+of the block which template this code inside. There is only one
+exception (`d-each` built-in block and its children, we will
+discuss it in a couple of sections).
 
 It's very important to note that if you use JS embedded expression
 it's value is bound by default to the real expression value.

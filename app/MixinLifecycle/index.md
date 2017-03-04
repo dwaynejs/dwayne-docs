@@ -23,7 +23,7 @@ class (not necessarily directly) or a function (
 `Mixin#afterUpdate` class instance method analogue) that is
 called with three arguments: new value, old value and mixin
 instance itself. In the second case Dwayne will create the class
-itself. In both cases Dwayne gets a class that extends `Block`
+itself. In both cases Dwayne gets a class that extends `Mixin`
 that has `afterUpdate` instance method.
 
 Then you need to insert the mixin as a regular HTML attribute

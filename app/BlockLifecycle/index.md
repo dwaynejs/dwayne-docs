@@ -44,8 +44,11 @@ happens:
 1. The block instance is created as a regular class instance.
 Some internal variables are created (`$` and `$$`). Two most
 important instance variables are created: `args` and `globals`,
-so you can use them starting from `constructor`. Note that it's
-necessary to call `super(opts)` in the `constructor`.
+so you can use them starting from `constructor`. Also
+`Block#parentScope` (in which scope the block is located) and
+`Block#parentTemplate` (in which template the block is located)
+are created as well. Note that it's necessary to call
+`super(opts)` in the `constructor`.
 
 2. `Block#afterConstruct` is called (you don't have to define
 it if you don't need it). By this moment you have to

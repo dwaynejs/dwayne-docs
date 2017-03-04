@@ -21,7 +21,7 @@ class App extends Block {
       terminology: 'Terminology',
       'block-lifecycle': 'Block lifecycle',
       'mixin-lifecycle': 'Mixin lifecycle',
-      'embedded-js': 'Embedded JavaScript',
+      'embedded-js': 'Embedded Javascript',
       blocks: 'Blocks',
       'd-if': 'd-if'
     };

@@ -221,6 +221,7 @@ Case 2 example:
 <!-- App/index.html -->
 <div class="app">
   <div d-style(marginTop,margin-bottom)="0px"/>
+  <div d-style(z-index)="2"/>
 </div>
 ```
 

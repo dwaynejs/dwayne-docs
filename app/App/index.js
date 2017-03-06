@@ -23,7 +23,10 @@ class App extends Block {
       'mixin-lifecycle': 'Mixin lifecycle',
       'embedded-js': 'Embedded Javascript',
       blocks: 'Blocks',
-      'd-if': 'd-if'
+      'd-if': 'd-if',
+      'd-switch': 'd-switch',
+      'd-block': 'd-block',
+      'd-each': 'd-each'
     };
   }
 

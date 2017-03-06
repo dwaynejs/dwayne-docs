@@ -67,8 +67,8 @@ blockquote {
 }
 
 .menu {
-  position: relative;
-  flex: 0 0 200px;
+  position: fixed;
+  width: 200px;
   margin-top: 20px;
   margin-right: 20px;
 }
@@ -89,15 +89,25 @@ blockquote {
 }
 
 .menu-content {
+  margin-left: 220px;
   flex: 0 0 calc(100% - 220px);
   max-width: calc(100% - 220px);
 }
 
 @media all and (max-width: 450px) {
+  .menu {
+    position: relative;
+    width: auto;
+  }
+
   .menu,
   .menu-content {
     flex: 0 0 100%;
     max-width: 100%;
+  }
+
+  .menu-content {
+    margin-left: 0;
   }
 
   .menu:after {

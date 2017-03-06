@@ -5,11 +5,14 @@ from local variables, args or globals). There are a couple ways
 of achieving that:
 
 1. Using embedded JS as a pure text. For this you just need to
-wrap your JS into "{" and "}" right inside your HTML.
+wrap your JS into "{" and "}" right inside your HTML. In this case
+if a JS value equals `null` or `undefined` nothing is rendered.
 
 2. Using embedded JS as a value of HTML attribute, mixin value
 or block argument. For this you need to wrap **whole** attribute
-value, mixin value or block argument in "{" and "}".
+value, mixin value or block argument in "{" and "}". If a value
+of an HTML attribute equals `null`, `undefined` or `false` it is
+removed.
 
 ```html
 <!-- case 1: -->
@@ -78,5 +81,7 @@ body)
 * Ternary operator (`?:`)
 * Property accessors (`.`, `[]`)
 * Function call
+
+All ES6 expression are transformed into equal ES5 expressions.
 
 ### Try it out

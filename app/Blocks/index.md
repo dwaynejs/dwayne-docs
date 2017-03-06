@@ -12,30 +12,32 @@ to empty string).
 
 There are two ways of creating blocks:
 
-1) Directly declare class that extends Block and register
+1. Directly declare class that extends Block and register
 it using `Block.block`:
 
-```js
-import { Block } from 'dwayne';
+  ```js
+  import { Block } from 'dwayne';
+  
+  class MyBlock extends Block {
+     static template = '<div class="my-block"/>';
+  }
+  
+  Block.block('MyBlock', MyBlock);
+  ```
 
-class MyBlock extends Block {
-  static template = '<div class="my-block"/>';
-}
-
-Block.block('MyBlock', MyBlock);
-```
-
-2) Put pure string (Block template) in the second argument
+2. Put pure string (Block template) in the second argument
 of `Block.block`:
 
-```js
-import { Block } from 'dwayne';
-
-Block.block('MyBlock', '<div class="my-block"/>');
-```
-
-Dwayne will create the class itself. Note that in this case
-you can't declare class and instance methods.
+  ```js
+  import { Block } from 'dwayne';
+  
+  Block.block('MyBlock', '<div class="my-block"/>');
+  ```
+  
+  Dwayne will create the class itself. Note that in this case
+  you can't declare class and instance methods.
+  
+### Usage
 
 In order to use a block put it as a regular HTML element
 in some other block's template. This element will be replaced
@@ -96,9 +98,11 @@ Javascript `true` value (not a string).
 Built-in blocks exist for helping you not invent the wheel.
 The built-in blocks are `d-if`, `d-switch`, `d-block` and `d-each`.
 There is also one built-in block (`d-elements`) that you should
-definitely not use. It's a low-level blocks and it is used by
-all the built-in blocks. All of built-in blocks watch their args
-if the opposite is not stated.
+definitely not use. It's a low-level block and it is used by
+all the built-in blocks.
+ 
+All of built-in blocks watch their args if the opposite is not
+stated.
 
 #### d-if
 

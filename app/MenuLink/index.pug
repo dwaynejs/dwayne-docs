@@ -1,6 +1,6 @@
 d-if(if="{args.submenu ? globals.route.hash === args.submenu || '' : globals.route.name === args.name}")
   div(d-class(submenu-link)="{args.submenu}") {globals.routesNames[args.submenu || args.name]}
-  d-if(if="{children.length}")
+  d-if(if="{args.hasSubmenu}")
     div
       d-block
 d-else

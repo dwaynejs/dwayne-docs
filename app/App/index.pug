@@ -6,11 +6,22 @@ div.menu
   MenuLink(name="block-lifecycle")
   MenuLink(name="mixin-lifecycle")
   MenuLink(name="embedded-js")
-  MenuLink(name="blocks")
+  MenuLink(name="blocks", hasSubmenu)
     MenuLink(name="blocks", submenu="d-if")
     MenuLink(name="blocks", submenu="d-switch")
     MenuLink(name="blocks", submenu="d-block")
     MenuLink(name="blocks", submenu="d-each")
+  MenuLink(name="mixins", hasSubmenu)
+    MenuLink(name="mixins", submenu="d-show")
+    MenuLink(name="mixins", submenu="d-hide")
+    MenuLink(name="mixins", submenu="d-node")
+    MenuLink(name="mixins", submenu="d-elem")
+    MenuLink(name="mixins", submenu="d-style")
+    MenuLink(name="mixins", submenu="d-attr")
+    MenuLink(name="mixins", submenu="d-class")
+    MenuLink(name="mixins", submenu="d-bind")
+    MenuLink(name="mixins", submenu="d-on")
+    MenuLink(name="mixins", submenu="d-value")
 div.menu-content
   Introduction
   GettingStarted
@@ -20,3 +31,4 @@ div.menu-content
   MixinLifecycle
   EmbeddedJS
   Blocks
+  Mixins

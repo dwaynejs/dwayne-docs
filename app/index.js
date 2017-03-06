@@ -10,6 +10,7 @@ import './BlockLifecycle';
 import './MixinLifecycle';
 import './EmbeddedJS';
 import './Blocks';
+import './Mixins';
 
 import './Evaluated';
 import './MenuLink';

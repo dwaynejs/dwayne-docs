@@ -41,6 +41,13 @@ Block.block('App', '<div my-mixin="foo"/>');
 > There are more kinds of syntax to insert a mixin but we'll
 cover them later.
 
+When an HTML element has more than 1 attributes or mixins, first
+the attributes are set, then the mixins are created.
+
+> Note: the order in which mixins and attributes are written
+inside an HTML element matters a lot! This will be explained
+in `d-rest` part in mixins section.
+
 When this block is rendering and sees `my-mixin` the following
 happens:
 
@@ -53,9 +60,14 @@ element so you can use it for your needs (it's very likely
 that you're going to need it because extending HTML elements
 behaviour is the only thing mixins do). `elem` property contains
 `Elem` analogue of the `node` property (which is not covered
-by the guide, see API docs). Note that it's necessary to call
-`super(opts)` in the `constructor` if you use it (though it's
-a rare case when you need to use the `constructor` in mixin).
+by the guide, see API docs). Also `Mixin#parentScope`,
+`Mixin#parentTemplate`, `Mixin#args` and `Mixin#comment` are
+created. `Mixin#parentScope` contains the parent scope value.
+`Mixin#parentTemplate` contains the block inside which the mixin
+is located. And we'll get into `Mixin#args` and `Mixin#comment`
+later. Note that it's necessary to call `super(opts)` in the
+`constructor` if you use it (though it's a rare case when you
+need to use the `constructor` in mixin).
 
 2. If mixin class has a static `evaluate` property set to `false`
 (it's defaults to `true` and means that the HTML attribute value

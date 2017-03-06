@@ -26,7 +26,18 @@ class App extends Block {
       'd-if': 'd-if',
       'd-switch': 'd-switch',
       'd-block': 'd-block',
-      'd-each': 'd-each'
+      'd-each': 'd-each',
+      mixins: 'Mixins',
+      'd-show': 'd-show',
+      'd-hide': 'd-hide',
+      'd-node': 'd-node',
+      'd-elem': 'd-elem',
+      'd-style': 'd-style',
+      'd-attr': 'd-attr',
+      'd-class': 'd-class',
+      'd-bind': 'd-bind',
+      'd-on': 'd-on',
+      'd-value': 'd-value'
     };
   }
 

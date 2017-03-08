@@ -37,7 +37,15 @@ class App extends Block {
       'd-class': 'd-class',
       'd-bind': 'd-bind',
       'd-on': 'd-on',
-      'd-value': 'd-value'
+      'd-value': 'd-value',
+      'd-rest': 'd-rest',
+      'extending-blocks': 'Extending blocks',
+      hooks: 'Hooks and listeners',
+      '-block-beforeregisterblock-': 'Block.beforeRegisterBlock',
+      '-block-beforeregistermixin-': 'Block.beforeRegisterMixin',
+      '-block-watch-': 'Block#watchArgs',
+      'block-evaluateandwatch': 'Block#evaluateAndWatch',
+      'block-static-properties': 'Block static properties'
     };
   }
 

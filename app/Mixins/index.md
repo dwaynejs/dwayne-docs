@@ -200,6 +200,7 @@ of `d-style` syntax:
 
 ```html
 <div d-style="{objectWithCSSProps}"/>
+<div d-style="{stringLikeTheOneYouPassToUsualStyleAttribute}"/>
 <div d-style(prop1,...,propN)="{value}"/>
 ```
 
@@ -216,6 +217,15 @@ If some value in the object equals `null` or `undefined` the
 property is removed.
 
 Case 2 example:
+
+```html
+<!-- App/index.html -->
+<div class="app">
+  <div d-style="marginTop: 5px; margin-bottom: 5px;"/>
+</div>
+```
+
+Case 3 example:
 
 ```html
 <!-- App/index.html -->
@@ -269,6 +279,16 @@ all of them are added, otherwise they're not.
 
 In all cases if an updated value does not contain classes that
 are already added by **this** particular mixin, they are removed.
+
+> Warning: try not to use dynamic class or style attributes because
+there can be `d-class` and `d-style` mixins, applied to the same
+element, which behaviour will be broken if `class` or `style`
+attributes are overridden because they are dynamic.  
+`d-class` as well as `d-style` except arguments as if they are
+passed to `class` and `style` attributes respectively, so you can
+get rid of `class` and `style` attributes completely (though
+there's nothing wrong in setting static `class` or `style`
+attributes).
 
 #### d-bind
 
@@ -368,3 +388,123 @@ achieved by setting `selected` attribute for `option`'s.
 
 You can write your own mixin for setting the default value
 (don't forget to put it before `d-value`!).
+
+#### d-rest
+
+`d-rest` is a very powerful mixin because it lets you pass multiple
+attributes or mixins (as an object) to an element at once.
+
+> It works for blocks as well (the only block mixin) which lets
+you pass multiple arguments to a block.
+
+It is also a unique mixin because it doesn't except arguments (you
+can't write `<div d-rest(rest)="{restArgs}"/>`). But it supports
+comments, so you can apply multiple `d-rest`'s (the same for
+blocks) to one element (or block).
+
+`d-rest` is also an important mixin because it can override some
+previous attributes or mixins (that's why the comments were invented).
+In case of blocks the behaviour is the same (`d-rest` arg may
+override some other args before it).
+
+> Note: the order matters a lot as it will be explained by the next
+example.
+
+Example:
+
+```html
+<!-- App/index.html -->
+<div class="app">
+  <input
+    placeholder="Enter a text"
+    type="text"
+    d-rest="{{ type: 'email' }}"
+  />
+</div>
+<div class="app">
+  <input
+    placeholder="Enter a text"
+    d-rest="{{ type: 'email' }}"
+    type="text"
+  />
+</div>
+```
+
+In this example result HTML is:
+
+```html
+<div class="app">
+  <input
+    placeholder="Enter a text"
+    type="email"
+  />
+</div>
+<div class="app">
+  <input
+    placeholder="Enter a text"
+    type="text"
+  />
+</div>
+```
+
+In some cases it is an advantage because it lets you set default
+mixin or attribute values. But be careful: you may not want such
+behaviour, so if you pass some mixins and you don't want someone
+to override them set a unique comment. And vice versa: if you don't
+want `d-rest` to override your mixins set them a unique comment.
+
+Example 2:
+
+```html
+<!-- Input/index.html -->
+<!-- lodash _.omit function is used here for -->
+<!-- omitting unneeded args -->
+<input
+  class="my-input"
+  d-class#myInputOuterClass="{args.class}"
+  d-style#myInputOuterStyle="{args.style}"
+  d-rest="{_.omit(args, 'class', 'style')}"
+/>
+```
+
+In this example we create an input wrapper (that could be more
+complicated). Now you can use this to insert custom inputs as
+usual ones, but they will have your custom class.
+
+> Note: for passing `d-value`, `d-node` or `d-elem` in this case
+you need to specify the scope.
+
+Usage:
+
+```html
+<!-- App/index.html -->
+<Input
+  type="text"
+  class="text-input"
+  placeholder="Enter a text"
+  d-value(text)="{this}"
+  d-node(textInput)="{this}"
+/>
+<Input
+  type="email"
+  class="email-input"
+  placeholder="Enter an email address"
+  d-value(email)="{this}"
+  d-elem(emailInput)="{this}"
+/>
+```
+
+Result HTML is:
+
+```html
+<input
+  type="text"
+  class="my-input text-input"
+  placeholder="Enter a text"
+/>
+<input
+  type="email"
+  class="my-input email-input"
+  placeholder="Enter an email address"
+/>
+```

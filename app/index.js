@@ -11,6 +11,9 @@ import './MixinLifecycle';
 import './EmbeddedJS';
 import './Blocks';
 import './Mixins';
+import './ExtendingBlocks';
+import './Hooks';
+import './BlockStaticProperties';
 
 import './Evaluated';
 import './MenuLink';
